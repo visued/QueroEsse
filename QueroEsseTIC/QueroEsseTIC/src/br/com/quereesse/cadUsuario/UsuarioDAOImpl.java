@@ -32,12 +32,28 @@ public class UsuarioDAOImpl implements UsuarioDAO{
             System.out.println(e.getMessage());
             return false;
         }
+     
         }
     }
-
+       
     @Override
     public boolean remove(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = BD.conecta();
+        if (con == null) {
+            return false;
+        } else {
+            String sql = "delete from usuario where apelido = ?";
+            try {
+                PreparedStatement canal = con.prepareStatement(sql);
+                canal.setString(3, usuario.getApelido());
+                canal.execute();
+                return true;
+
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
     }
 
     @Override
@@ -49,6 +65,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
     public ArrayList<Usuario> consulta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    }
 
-      
-}
+
+    
