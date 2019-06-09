@@ -25,16 +25,19 @@ public class ProdutoDAOImpl implements ProdutoDAO{
             }
             else {
                 System.out.println("Conectador com sucesso!");
-                String sql = "insert into produto (idUsuario, idComentario, nomeProduto, avaliacao, especificacao, modelo) values (?, ?, ?, ?, ?)";
+                String sql = "insert into produto (idUsuario, idComentario, nomeProduto, avaliacao, especificacao, modelo) values (?, ?, ?, ?, ?, ?)";
                 try {
                     // cria canal de comunicação para executar SQL
                     PreparedStatement canal = conexao.prepareStatement(sql);
                     // coloca os valores dos ?
-                    canal.setInt(1, 1);
-                    canal.setInt(2, 1);
+                    
+                    canal.setInt(1, produto.getUsuarioLogado());
+                    canal.setInt(2, produto.getComentario().getIdComentario());
                     canal.setString(3, produto.getNomeProduto());
-                    canal.setString(4, produto.getAvaliacao());
-                    canal.setString(5, produto.getModelo());
+                    canal.setInt(4, produto.getAvaliacao());
+                    canal.setString(5, produto.getEspecificacao());
+                    canal.setString(6, produto.getModelo());
+                    System.out.println(sql);
                     // executa o comando no banco
                     canal.execute();
                     return true;

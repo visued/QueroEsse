@@ -6,6 +6,7 @@
 package br.com.quereesse;
 
 import br.com.quereesse.cadComentario.Comentario;
+import br.com.quereesse.cadComentario.ComentarioDAOImpl;
 import br.com.quereesse.cadProduto.Produto;
 import br.com.quereesse.cadProduto.ProdutoDAOImpl;
 import br.com.quereesse.cadUsuario.Usuario;
@@ -20,13 +21,14 @@ import javax.swing.JOptionPane;
 public class CadastroProduto extends javax.swing.JInternalFrame {
 
     ArrayList<Usuario> usuarios;
-    ArrayList<Comentario> comentarios;
+    ArrayList<Comentario> lista;
     /**
      * Creates new form CadastroProduto
      */
     public CadastroProduto() {
         initComponents();
         pegaUsuarioLogado();
+        pegaComentario();
     }
 
     /**
@@ -193,34 +195,24 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         //idUsuario, idComentario, nomeProduto, avaliacao, especificacao, modelo
         Produto produto = new Produto();
-        produto.setUsuario(usuarios.get(Integer.parseInt(textF_UsuarioLogado.getText())));
+        produto.setUsuarioLogado(Integer.parseInt(textF_UsuarioLogado.getText()));
         int indiceComentario = cH_idComentario.getSelectedIndex();
-        produto.setComentario(comentarios.get(indiceComentario));
+        System.out.println(indiceComentario);
+        produto.setComentario(lista.get(indiceComentario));
         produto.setNomeProduto(textF_Nome.getText());
-        produto.setAvaliacao(textF_Avaliacao.getText());
+        produto.setAvaliacao(Integer.parseInt(textF_Avaliacao.getText()));
+        produto.setEspecificacao(textF_Especificao.getText());
         produto.setModelo(textF_Modelo.getText());
         
         ProdutoDAOImpl crud = new ProdutoDAOImpl();
-        
-        if (textF_CodProduto.equals("")){
-            // insere produto no banco de dados
+         // insere produto no banco de dados
             if (crud.insere(produto)){
                 JOptionPane.showMessageDialog(null, "Produto inserido com sucesso");
             }
             else {
                 JOptionPane.showMessageDialog(null, "Produto não inserido");
             }
-        }
-        else {
-             // atualiza produto no banco de dados
-            produto.setId(Integer.parseInt(textF_CodProduto.getText()));
-            if (crud.atualiza(produto)){
-                JOptionPane.showMessageDialog(null, "Produto atualizado com sucesso");
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Produto não atualizado");
-            }
-        }
+
     }//GEN-LAST:event_button2ActionPerformed
 
 
@@ -247,4 +239,14 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         Login usuarioLogado = new Login();
         textF_UsuarioLogado.setText(Integer.toString(usuarioLogado.getUsuarioLogado()));
         }
+    
+    private void pegaComentario() {
+        ComentarioDAOImpl crud = new ComentarioDAOImpl();
+        //recupera a lista de alunos
+        lista = crud.consulta();
+        //coloco os alunos (seus nomes) no combobox
+        for (Comentario ptr : lista) {
+            cH_idComentario.addItem(ptr.getComentario());
+        }
+    }  
 }

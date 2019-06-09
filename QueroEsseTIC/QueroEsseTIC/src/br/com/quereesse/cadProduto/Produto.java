@@ -15,10 +15,10 @@ import br.com.quereesse.cadUsuario.Usuario;
 public class Produto {
     private int id;
     private String nomeProduto;
-    private String avaliacao;
+    private int avaliacao;
     private String especificacao;
     private String modelo;
-    private Usuario usuario;
+    private int usuarioLogado;
     private Comentario comentario;
 
     public int getId() {
@@ -37,13 +37,15 @@ public class Produto {
         this.nomeProduto = nomeProduto;
     }
 
-    public String getAvaliacao() {
+    public int getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(String avaliacao) {
+    public void setAvaliacao(int avaliacao) {
         this.avaliacao = avaliacao;
     }
+
+
 
     public String getEspecificacao() {
         return especificacao;
@@ -61,14 +63,6 @@ public class Produto {
         this.modelo = modelo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Comentario getComentario() {
         return comentario;
     }
@@ -76,7 +70,13 @@ public class Produto {
     public void setComentario(Comentario comentario) {
         this.comentario = comentario;
     }
-    
-    
+
+    public int getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(int usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }  
     
 }
