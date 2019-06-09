@@ -10,5 +10,5 @@ package br.com.quereesse.cadComentario;
  * @author vsued
  */
 public class ComentarioImpl {
-    
+     
 }
