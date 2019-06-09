@@ -46,12 +46,51 @@ public class ComentarioDAOImpl implements ComentarioDAO{
 
     @Override
     public boolean remove(Comentario comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = BD.conecta();
+        if (conexao == null){
+            return false;
+        }
+        else{
+            String sql = "delete from comentario where id = ?";
+            try{
+                //cria canal de comunicação para executar SQL
+                PreparedStatement canal = conexao.prepareStatement(sql);
+                //coloca os valos dos ?
+                canal.setInt(1, comentario.getIdComentario());              
+                //exeuta o comando no banco
+                canal.execute();
+                return true;
+            }
+            catch(SQLException e){
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
     }
 
     @Override
     public boolean atualiza(Comentario comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = BD.conecta();
+        if (conexao == null){
+            return false;
+        }
+        else{
+            String sql = "update comentario set comentario = ?, where id = ?";
+            try{
+                //cria canal de comunicação para executar SQL
+                PreparedStatement canal = conexao.prepareStatement(sql);
+                //coloca os valos dos ?
+                canal.setString(1, comentario.getComentario());
+                canal.setInt(2, comentario.getIdComentario());
+                //exeuta o comando no banco
+                canal.execute();
+                return true;
+            }
+            catch(SQLException e){
+                System.out.println(e.getMessage());
+                return false;
+            }
+        }
     }
 
     @Override
