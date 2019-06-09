@@ -5,6 +5,8 @@
  */
 package br.com.quereesse;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author vsued

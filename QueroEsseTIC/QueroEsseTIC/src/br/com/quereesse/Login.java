@@ -15,8 +15,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    private int usuarioLogado = 1;
+    
+    public int getUsuarioLogado(){
+        return usuarioLogado;
+    }
     public Login() {
         initComponents();
+        
     }
 
     /**

@@ -5,10 +5,19 @@
  */
 package br.com.quereesse.cadProduto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author vsued
  */
 public interface ProdutoDAO {
     
+    public boolean insere(Produto produto);
+    
+    public boolean remove(Produto produto);
+    
+    public boolean atualiza(Produto produto);
+    
+    public ArrayList<Produto> consulta();   
 }
