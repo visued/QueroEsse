@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.quereesse.cadUsuario;
 
-/**
- *
- * @author vsued
- */
+import java.util.ArrayList;
+
 public interface UsuarioDAO {
     
+
+    public boolean insere(Usuario usuario);
+    
+    public boolean remove(Usuario usuario);
+
+    public boolean atualiza(Usuario usuario);
+
+    public ArrayList<Usuario> consulta();
 }
