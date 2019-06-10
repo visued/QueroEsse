@@ -5,6 +5,11 @@
  */
 package br.com.quereesse;
 
+import br.com.quereesse.cadUsuario.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,6 +20,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    ArrayList <Usuario> usuario;
+    Connection conecta = BD.conecta();
     private int usuarioLogado = 1;
     
     public int getUsuarioLogado(){
@@ -163,16 +170,33 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        //Connection con = BD.conecta();
+       
         if(jTextField1.getText().equals("") || (new String(jPasswordField1.getPassword()).equals(""))){
-            JOptionPane.showMessageDialog(null, "Login ou Senha inválido.", "Login - QueroEsse!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Login ou Senha inválido.");
         }
-        else{
-           new Principal().setVisible(true); 
-        }
+        if(conecta == null) {
+        } 
+        else {
+            String sql = "SELECT nome, senha FROM usuario  WHERE usuario = ?  and senha = ?";
+            try {
+                //cria canal de comunicação para executar SQL
+                PreparedStatement canal = conecta.prepareStatement(sql);
+                //coloca os valores dos ?
+                canal.setString(1, usuario.getNome());
+                canal.setString(2, usuario.getSenha());
+                //executa os comandos do banco
+                canal.execute();            
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+            if(jTextField1.getText().equals(nome) && jPasswordField1.getText().equals(senha)){   
+                new Principal().setVisible(true); 
+            }else{
+                JOptionPane.showMessageDialog(null,"Login ou Senha inválidos.");
+            }
+        }              
     }//GEN-LAST:event_jButton1ActionPerformed
- 
+   
     /**
      * @param args the command line arguments
      */
