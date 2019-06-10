@@ -188,14 +188,15 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         Usuario usuario = new Usuario();
         usuario.setNome(Nome.getText());
         usuario.setSobrenome(Sobrenome.getText());
-        usuario.setApelido(Apelido.getText());
+        usuario.setApelido(Apelido.getText().trim());
+        usuario.setSenha(Senha.getPassword().toString().trim());
         
-        try {
-            usuario.setSenha(ConvertMD5(Senha.getText()));
-           
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            
+//           
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         //insere aluno no banco de dados
         UsuarioDAOImpl crud = new UsuarioDAOImpl();

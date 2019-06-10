@@ -8,9 +8,12 @@ package br.com.quereesse;
 import br.com.quereesse.cadUsuario.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author vsued
@@ -20,16 +23,17 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    ArrayList <Usuario> usuario;
+    ArrayList<Usuario> usuario;
     Connection conecta = BD.conecta();
     private int usuarioLogado = 1;
-    
-    public int getUsuarioLogado(){
+
+    public int getUsuarioLogado() {
         return usuarioLogado;
     }
+
     public Login() {
         initComponents();
-        
+
     }
 
     /**
@@ -170,33 +174,29 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        if(jTextField1.getText().equals("") || (new String(jPasswordField1.getPassword()).equals(""))){
-            JOptionPane.showMessageDialog(null, "Login ou Senha inválido.");
+        ArrayList<Usuario> loginPsw;
+        Login login = new Login();
+        loginPsw = login.consulta(jTextField1.getText().trim());
+        String apelido = null;
+        String senha = null;
+
+        for (Usuario ptr : loginPsw) {
+            apelido = ptr.getApelido();
+            senha = ptr.getSenha();
         }
-        if(conecta == null) {
-        } 
-        else {
-            String sql = "SELECT nome, senha FROM usuario  WHERE usuario = ?  and senha = ?";
-            try {
-                //cria canal de comunicação para executar SQL
-                PreparedStatement canal = conecta.prepareStatement(sql);
-                //coloca os valores dos ?
-                canal.setString(1, usuario.getNome());
-                canal.setString(2, usuario.getSenha());
-                //executa os comandos do banco
-                canal.execute();            
-            }catch (SQLException e){
-                System.out.println(e.getMessage());
-            }
-            if(jTextField1.getText().equals(nome) && jPasswordField1.getText().equals(senha)){   
-                new Principal().setVisible(true); 
-            }else{
-                JOptionPane.showMessageDialog(null,"Login ou Senha inválidos.");
-            }
+        
+
+        String pass = jPasswordField1.getPassword().toString().trim();
+        if (jTextField1.getText().equals(apelido) && pass.equals(senha)) {
+            new Principal().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Login ou Senha inválido.");
+            System.out.println(apelido);
+            System.out.println(senha);
+            System.out.println("########################################################################");
         }              
     }//GEN-LAST:event_jButton1ActionPerformed
-   
+
     /**
      * @param args the command line arguments
      */
@@ -241,4 +241,34 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    public ArrayList<Usuario> consulta(String apelido) {
+        Connection conexao = BD.conecta();
+        if (conexao == null) {
+            return null;
+        } else {
+            String sql = "select trim(senha), trim(apelido) from usuario where apelido=" + "'"+apelido+"'";
+            System.out.println(sql);
+            try {
+                // cria canal de comunicação para executar SQL
+                Statement canal = conexao.createStatement();
+                // coloca os valores dos ?
+                ResultSet ponteiro = canal.executeQuery(sql);
+                ArrayList<Usuario> usuarios = new ArrayList();
+                while (ponteiro.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setApelido(ponteiro.getString("apelido"));
+                    usuario.setSenha(ponteiro.getString("senha"));
+                    usuarios.add(usuario);
+                }
+                // executa o comando no banco
+                canal.execute(sql);
+                return usuarios;
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+
+    }
 }

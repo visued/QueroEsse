@@ -1,8 +1,10 @@
 package br.com.quereesse.cadUsuario;
 
 import br.com.quereesse.BD;
+import br.com.quereesse.cadComentario.Comentario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -63,9 +65,36 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public ArrayList<Usuario> consulta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
+            Connection conexao = BD.conecta();
+            if (conexao == null){
+                return null;
+            }
+            else {
+                String sql = "select * from usuario";
+                try {
+                    // cria canal de comunicação para executar SQL
+                    Statement canal = conexao.createStatement();
+                    // coloca os valores dos ?
+                    ResultSet ponteiro = canal.executeQuery(sql);
+                    ArrayList<Usuario> usuarios = new ArrayList();
+                    while (ponteiro.next()){
+                        Usuario usuario = new Usuario();
+                        usuario.setApelido(ponteiro.getString("apelido"));
+                        usuario.setSenha(ponteiro.getString("senha"));
+                        usuarios.add(usuario);
+                    }
+                    // executa o comando no banco
+                    canal.execute(sql);
+                    return usuarios;
+                }
+                catch(SQLException e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
+            }    
 
+    
+    }
+}
 
     
