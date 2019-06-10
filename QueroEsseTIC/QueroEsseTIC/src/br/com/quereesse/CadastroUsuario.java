@@ -7,6 +7,10 @@ package br.com.quereesse;
 
 import br.com.quereesse.cadUsuario.Usuario;
 import br.com.quereesse.cadUsuario.UsuarioDAOImpl;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -185,11 +189,17 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         usuario.setNome(Nome.getText());
         usuario.setSobrenome(Sobrenome.getText());
         usuario.setApelido(Apelido.getText());
-        usuario.setSenha(Senha.getText());
+        
+        try {
+            usuario.setSenha(ConvertMD5(Senha.getText()));
+           
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         //insere aluno no banco de dados
         UsuarioDAOImpl crud = new UsuarioDAOImpl();
-        
+
         if (crud.insere(usuario)) {
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
         } else {
@@ -205,19 +215,30 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
-       
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_SenhaActionPerformed
 
     private void cancelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelaActionPerformed
-       dispose();
-        
-        
-        
+        dispose();
+
+
     }//GEN-LAST:event_cancelaActionPerformed
+
+    private String ConvertMD5(String senha) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(senha.getBytes());
+
+        byte byteData[] = md.digest();
+
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+
+        System.out.println("Digest(in hex format):: " + sb.toString());
+        return sb.toString();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
