@@ -186,6 +186,7 @@ public class Login extends javax.swing.JFrame {
         for (Usuario ptr : loginPsw) {
             apelido = ptr.getApelido();
             senha = ptr.getSenha();
+            usuarioLogado = ptr.getIdUsuario();
 
         }
         CadastroUsuario psw = new CadastroUsuario();
@@ -253,7 +254,7 @@ public class Login extends javax.swing.JFrame {
         if (conexao == null) {
             return null;
         } else {
-            String sql = "select apelido,senha from usuario where apelido=" + "'" + apelido + "'";
+            String sql = "select idusuario,apelido,senha from usuario where apelido=" + "'" + apelido + "'";
             System.out.println(sql);
             try {
                 // cria canal de comunicação para executar SQL
@@ -265,6 +266,7 @@ public class Login extends javax.swing.JFrame {
                     Usuario usuario = new Usuario();
                     usuario.setApelido(ponteiro.getString("apelido"));
                     usuario.setSenha(ponteiro.getString("senha"));
+                    usuario.setIdUsuario(ponteiro.getInt("idusuario"));
                     usuarios.add(usuario);
                 }
                 // executa o comando no banco
