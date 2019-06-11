@@ -6,12 +6,15 @@
 package br.com.quereesse;
 
 import br.com.quereesse.cadUsuario.Usuario;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -183,18 +186,21 @@ public class Login extends javax.swing.JFrame {
         for (Usuario ptr : loginPsw) {
             apelido = ptr.getApelido();
             senha = ptr.getSenha();
-        }
-        
 
-        String pass = jPasswordField1.getPassword().toString().trim();
-        if (jTextField1.getText().equals(apelido) && pass.equals(senha)) {
-            new Principal().setVisible(true);
-        }else{
+        }
+        CadastroUsuario psw = new CadastroUsuario();
+
+        if (jTextField1.getText().equals(apelido)) {
+            try {
+                psw.ConvertMD5(jPasswordField1.getText()).equals(senha);
+                System.out.println(jPasswordField1.getText());
+                new Principal().setVisible(true);
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             JOptionPane.showMessageDialog(null, "Login ou Senha inválido.");
-            System.out.println(apelido);
-            System.out.println(senha);
-            System.out.println("########################################################################");
-        }              
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -247,7 +253,7 @@ public class Login extends javax.swing.JFrame {
         if (conexao == null) {
             return null;
         } else {
-            String sql = "select trim(senha), trim(apelido) from usuario where apelido=" + "'"+apelido+"'";
+            String sql = "select apelido,senha from usuario where apelido=" + "'" + apelido + "'";
             System.out.println(sql);
             try {
                 // cria canal de comunicação para executar SQL
