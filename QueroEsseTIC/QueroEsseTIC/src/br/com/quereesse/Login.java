@@ -186,13 +186,16 @@ public class Login extends javax.swing.JFrame {
 
         if (jTextField1.getText().equals(apelido)) {
             try {
-                psw.ConvertMD5(jPasswordField1.getText()).equals(senha);
-                System.out.println(jPasswordField1.getText());
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                principal.setExtendedState(principal.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-                        
-                
+                if (psw.ConvertMD5(jPasswordField1.getText()).equals(senha)) {
+                    
+                    System.out.println(jPasswordField1.getText());
+                    Principal principal = new Principal();
+                    principal.setVisible(true);
+                    principal.setExtendedState(principal.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Login ou Senha inválido.");
+                }
+
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
