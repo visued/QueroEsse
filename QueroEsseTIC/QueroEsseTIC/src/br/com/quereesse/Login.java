@@ -6,6 +6,7 @@
 package br.com.quereesse;
 
 import br.com.quereesse.cadUsuario.Usuario;
+import java.awt.Frame;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -197,7 +199,11 @@ public class Login extends javax.swing.JFrame {
             try {
                 psw.ConvertMD5(jPasswordField1.getText()).equals(senha);
                 System.out.println(jPasswordField1.getText());
-                new Principal().setVisible(true);
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                principal.setExtendedState(principal.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                        
+                
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
