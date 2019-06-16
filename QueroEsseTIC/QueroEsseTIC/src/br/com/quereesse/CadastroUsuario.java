@@ -28,12 +28,15 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         initComponents();
 
     }
+<<<<<<< HEAD
 
     CadastroUsuario(Usuario usuarioSelecionado) {
         initComponents();
 
     }
 
+=======
+>>>>>>> 3e16d36eb323cbe57ebf2646f44853e6442aa6cb
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
