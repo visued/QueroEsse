@@ -26,6 +26,13 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    CadastroUsuario(Usuario usuarioSelecionado) {
+        initComponents();
+        //alimenta formulario
+        jTextField1.setText(String.valueOf(usuarioSelecionado.getIdUsuario()));
+        Apelido.setText(usuarioSelecionado.getApelido());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
