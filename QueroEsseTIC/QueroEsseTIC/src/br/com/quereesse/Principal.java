@@ -43,6 +43,9 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        consultUsuario = new javax.swing.JMenuItem();
+        consultComentario = new javax.swing.JMenuItem();
+        consultProduto = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
@@ -99,6 +102,31 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Consultar");
+
+        consultUsuario.setText("Usuário");
+        consultUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(consultUsuario);
+
+        consultComentario.setText("Comentário");
+        consultComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultComentarioActionPerformed(evt);
+            }
+        });
+        jMenu2.add(consultComentario);
+
+        consultProduto.setText("Produto");
+        consultProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultProdutoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(consultProduto);
+
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Sobre");
@@ -139,6 +167,24 @@ public class Principal extends javax.swing.JFrame {
         telaProduto.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void consultComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultComentarioActionPerformed
+        ConsultaComentario telaConsultaComentario = new ConsultaComentario();
+        jDesktopPane1.add(telaConsultaComentario);
+        telaConsultaComentario.setVisible(true);
+    }//GEN-LAST:event_consultComentarioActionPerformed
+
+    private void consultUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultUsuarioActionPerformed
+        ConsultaUsuario telaConsultaUsuario = new ConsultaUsuario();
+        jDesktopPane1.add(telaConsultaUsuario);
+        telaConsultaUsuario.setVisible(true);
+    }//GEN-LAST:event_consultUsuarioActionPerformed
+
+    private void consultProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultProdutoActionPerformed
+        //ConsultaProduto telaConsultaProduto = new ConsultaProduto();
+        //jDesktopPane1.add(telaConsultaProduto);
+        //telaConsultaProduto.setVisible(true);
+    }//GEN-LAST:event_consultProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -175,6 +221,9 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem consultComentario;
+    private javax.swing.JMenuItem consultProduto;
+    private javax.swing.JMenuItem consultUsuario;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

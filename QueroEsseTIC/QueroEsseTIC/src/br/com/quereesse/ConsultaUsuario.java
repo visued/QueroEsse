@@ -41,12 +41,11 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setClosable(true);
+
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID Usuário", "Apelido"
@@ -121,7 +120,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
         UsuarioDAOImpl crud = new UsuarioDAOImpl();
         usuarios = crud.consulta();
-        for(Usuario usuario: usuarios){ //Para cada aluno do banco
+        for(Usuario usuario: usuarios){ 
             Object linha[] = new Object[2];
             linha[0] = usuario.getIdUsuario();
             linha[1] = usuario.getApelido();
@@ -137,6 +136,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         else{
             UsuarioDAOImpl crud = new UsuarioDAOImpl();
             Usuario usuarioSelecionado = usuarios.get(linhaSelecionada);
+            
             if(crud.remove(usuarioSelecionado)){
                 JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
                 //clica no botão

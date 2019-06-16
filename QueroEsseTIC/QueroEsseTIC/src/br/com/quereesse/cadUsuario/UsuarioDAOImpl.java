@@ -44,10 +44,10 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         if (con == null) {
             return false;
         } else {
-            String sql = "delete from usuario where apelido = ?";
+            String sql = "delete from usuario where idusuario = ?";
             try {
                 PreparedStatement canal = con.prepareStatement(sql);
-                canal.setString(3, usuario.getApelido());
+                canal.setInt(1, usuario.getIdUsuario());
                 canal.execute();
                 return true;
 
@@ -70,7 +70,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                 return null;
             }
             else {
-                String sql = "select * from usuario";
+                String sql = "select idusuario,apelido,senha from usuario";
                 try {
                     // cria canal de comunicação para executar SQL
                     Statement canal = conexao.createStatement();
@@ -79,8 +79,10 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                     ArrayList<Usuario> usuarios = new ArrayList();
                     while (ponteiro.next()){
                         Usuario usuario = new Usuario();
+                        usuario.setIdUsuario(ponteiro.getInt("idusuario"));
                         usuario.setApelido(ponteiro.getString("apelido"));
                         usuario.setSenha(ponteiro.getString("senha"));
+                        
                         usuarios.add(usuario);
                     }
                     // executa o comando no banco
