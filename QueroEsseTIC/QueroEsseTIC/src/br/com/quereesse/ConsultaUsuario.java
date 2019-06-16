@@ -122,7 +122,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         UsuarioDAOImpl crud = new UsuarioDAOImpl();
         usuarios = crud.consulta();
         for(Usuario usuario: usuarios){ //Para cada aluno do banco
-            Object linha[] = new Object[4];
+            Object linha[] = new Object[2];
             linha[0] = usuario.getIdUsuario();
             linha[1] = usuario.getApelido();
             modeloTabela.addRow(linha);

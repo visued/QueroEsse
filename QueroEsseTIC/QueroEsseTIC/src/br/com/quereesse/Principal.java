@@ -18,6 +18,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+       setExtendedState(MAXIMIZED_BOTH);
+        
     }
 
     /**
@@ -57,11 +59,15 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 764, Short.MAX_VALUE)
+            .addGap(0, 613, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 505, Short.MAX_VALUE)
+=======
+            .addGap(0, 469, Short.MAX_VALUE)
+>>>>>>> ee42c8db72d4f43e9474141978f022923d6b1496
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 176, 80));
