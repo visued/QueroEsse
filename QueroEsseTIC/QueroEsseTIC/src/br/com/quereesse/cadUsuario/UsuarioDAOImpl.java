@@ -60,7 +60,27 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public boolean atualiza(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = BD.conecta();
+       if (con == null){
+           return false;
+       }
+       else{
+           String sql = "update usuario set apelido = ? where idusuario = ?";
+           try{
+               //cria canal de comunicação para executar sql
+               PreparedStatement canal = con.prepareStatement(sql);
+               //coloca os valores dos ?
+               canal.setString(1, usuario.getApelido());
+               canal.setInt(2, usuario.getIdUsuario());
+               //executa o cmd no banco
+               canal.execute();
+               return true;
+           }
+           catch(SQLException e){
+               System.out.println(e.getMessage());
+               return false;
+           }
+       }
     }
 
     @Override
