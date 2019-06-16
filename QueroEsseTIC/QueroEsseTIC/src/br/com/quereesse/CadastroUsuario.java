@@ -9,6 +9,7 @@ import br.com.quereesse.cadUsuario.Usuario;
 import br.com.quereesse.cadUsuario.UsuarioDAOImpl;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -25,14 +26,12 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
      */
     public CadastroUsuario() {
         initComponents();
-        
+
     }
 
     CadastroUsuario(Usuario usuarioSelecionado) {
         initComponents();
-        //alimenta formulario
-        jTextField1.setText(String.valueOf(usuarioSelecionado.getIdUsuario()));
-        Apelido.setText(usuarioSelecionado.getApelido());
+
     }
 
     /**
@@ -56,9 +55,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         Senha = new javax.swing.JPasswordField();
         cadastra = new javax.swing.JButton();
         cancela = new javax.swing.JButton();
-        Remove = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -109,6 +105,12 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        Apelido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApelidoActionPerformed(evt);
+            }
+        });
+
         Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SenhaActionPerformed(evt);
@@ -126,16 +128,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
         cancela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelaActionPerformed(evt);
-            }
-        });
-
-        Remove.setText("Remove");
-
-        jLabel5.setText("Código:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -161,7 +153,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addGap(206, 206, 206)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,8 +171,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Remove)
-                        .addGap(32, 32, 32)
+                        .addGap(111, 111, 111)
                         .addComponent(cancela)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -189,7 +179,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                             .addComponent(Senha)
                             .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                             .addComponent(Sobrenome)
-                            .addComponent(jTextField1)
                             .addComponent(Apelido))
                         .addGap(288, 288, 288))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -209,11 +198,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel6)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +221,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastra)
-                    .addComponent(Remove)
                     .addComponent(cancela))
                 .addGap(22, 22, 22))
         );
@@ -245,37 +229,57 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
-        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_NomeActionPerformed
 
     private void cadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraActionPerformed
-        
+
         Usuario usuario = new Usuario();
         usuario.setNome(Nome.getText());
         usuario.setSobrenome(Sobrenome.getText());
-        usuario.setApelido(Apelido.getText().trim());      
+        usuario.setApelido(Apelido.getText().trim());
         try {
-             usuario.setSenha(ConvertMD5(Senha.getText()));     
+            usuario.setSenha(ConvertMD5(Senha.getText()));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        //insere aluno no banco de dados
-        UsuarioDAOImpl crud = new UsuarioDAOImpl();
-
-        if (crud.insere(usuario)) {
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+        if ((Apelido.getText().isEmpty()) || (Nome.getText().isEmpty()) || (Sobrenome.getText().isEmpty()) || (Senha.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar! Tente novamente.");
+            //insere aluno no banco de dados
+            UsuarioDAOImpl crud = new UsuarioDAOImpl();
+
+            ArrayList<Usuario> apelido;
+            Login login = new Login();
+            apelido = login.consulta(Apelido.getText().trim());
+            String nickname = null;
+
+            for (Usuario ptr : apelido) {
+                nickname = ptr.getApelido();
+
+            }
+          System.out.println(nickname);
+            if (nickname.equals(Apelido.getText())) {
+                JOptionPane.showMessageDialog(null, "Apelido existente!");
+
+            } else {
+                if (crud.insere(usuario)) {
+                    
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar! Tente novamente.");
+
+                }
+
+            }
 
         }
 
 
     }//GEN-LAST:event_cadastraActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
 
@@ -287,6 +291,11 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_cancelaActionPerformed
+
+    private void ApelidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApelidoActionPerformed
+
+
+    }//GEN-LAST:event_ApelidoActionPerformed
 
     public String ConvertMD5(String senha) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
@@ -307,7 +316,6 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apelido;
     private javax.swing.JTextField Nome;
-    private javax.swing.JButton Remove;
     private javax.swing.JPasswordField Senha;
     private javax.swing.JTextField Sobrenome;
     private javax.swing.JButton cadastra;
@@ -320,12 +328,10 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     private void setLocationRelativeTo(Object object) {
