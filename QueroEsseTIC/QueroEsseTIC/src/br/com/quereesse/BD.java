@@ -19,7 +19,7 @@ public class BD {
         Connection con;
         String url  = "jdbc:postgresql://localhost:5432/queroesse";
         String user = "postgres";
-        String psw  = "123";
+        String psw  = "12345";
 
         try {
             con = DriverManager.getConnection(url, user, psw);

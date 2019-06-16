@@ -53,6 +53,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jDesktopPane1.setBackground(new java.awt.Color(242, 242, 242));
         jDesktopPane1.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -65,6 +66,9 @@ public class Principal extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 469, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 176, 80));
+        jMenuBar1.setForeground(new java.awt.Color(0, 176, 80));
 
         jMenu1.setText("Cadastrar");
 

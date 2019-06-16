@@ -242,15 +242,13 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NomeActionPerformed
 
     private void cadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraActionPerformed
-
+        
         Usuario usuario = new Usuario();
         usuario.setNome(Nome.getText());
         usuario.setSobrenome(Sobrenome.getText());
-        usuario.setApelido(Apelido.getText());
-        
+        usuario.setApelido(Apelido.getText().trim());      
         try {
-            usuario.setSenha(ConvertMD5(Senha.getText()));
-           
+             usuario.setSenha(ConvertMD5(Senha.getText()));     
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -283,7 +281,7 @@ public class CadastroUsuario extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cancelaActionPerformed
 
-    private String ConvertMD5(String senha) throws NoSuchAlgorithmException {
+    public String ConvertMD5(String senha) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(senha.getBytes());
 
