@@ -5,6 +5,7 @@
  */
 package br.com.quereesse;
 
+import br.com.quereesse.cadComentario.AtualizaComentario;
 import br.com.quereesse.cadComentario.Comentario;
 import br.com.quereesse.cadComentario.ComentarioDAOImpl;
 import java.util.ArrayList;
@@ -76,6 +77,11 @@ public class ConsultaComentario extends javax.swing.JInternalFrame {
         });
 
         jButton4.setText("Fecha");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,18 +163,21 @@ public class ConsultaComentario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
         int linhaSelecionada = tabela.getSelectedRow();
         if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Selecione um aluno");
+            JOptionPane.showMessageDialog(null, "Selecione um comentário");
         }
         else{
             Comentario comentarioSelecionado = comentarios.get(linhaSelecionada);
-            CadastroComentario atualiza = new CadastroComentario(comentarioSelecionado);
+            AtualizaComentario atualiza = new AtualizaComentario(comentarioSelecionado);
             atualiza.setVisible(true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();          
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

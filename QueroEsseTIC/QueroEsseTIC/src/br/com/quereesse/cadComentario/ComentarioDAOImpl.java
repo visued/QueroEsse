@@ -51,7 +51,7 @@ public class ComentarioDAOImpl implements ComentarioDAO{
             return false;
         }
         else{
-            String sql = "delete from comentario where id = ?";
+            String sql = "delete from comentario where idcomentario = ?";
             try{
                 //cria canal de comunicação para executar SQL
                 PreparedStatement canal = conexao.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class ComentarioDAOImpl implements ComentarioDAO{
             return false;
         }
         else{
-            String sql = "update comentario set comentario = ?, where id = ?";
+            String sql = "update comentario set comentario = ? where idcomentario = ?";
             try{
                 //cria canal de comunicação para executar SQL
                 PreparedStatement canal = conexao.prepareStatement(sql);
@@ -109,7 +109,7 @@ public class ComentarioDAOImpl implements ComentarioDAO{
                     ArrayList<Comentario> comentarios = new ArrayList();
                     while (ponteiro.next()){
                         Comentario comentario = new Comentario();
-                        comentario.setIdComentario(ponteiro.getInt("idComentario"));
+                        comentario.setIdComentario(ponteiro.getInt("idcomentario"));
                         comentario.setComentario(ponteiro.getString("comentario"));
                         comentarios.add(comentario);
                     }

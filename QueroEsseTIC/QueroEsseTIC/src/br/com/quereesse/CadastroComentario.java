@@ -21,13 +21,7 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    CadastroComentario(Comentario comentarioSelecionado) {
-        initComponents();
-        Comentario comentario = new Comentario();
-        comentario.setComentario(textAreaComentario.getText());
-        ComentarioDAOImpl crud = new ComentarioDAOImpl();
-        
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,8 +32,6 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textF_codComentario = new java.awt.TextField();
-        label1 = new java.awt.Label();
         label2 = new java.awt.Label();
         textAreaComentario = new java.awt.TextArea();
         button1 = new java.awt.Button();
@@ -49,17 +41,15 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(764, 503));
         setPreferredSize(new java.awt.Dimension(764, 503));
 
-        textF_codComentario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textF_codComentarioActionPerformed(evt);
-            }
-        });
-
-        label1.setText("Cód. Comentário:");
-
         label2.setText("Insira o comentário:");
 
-        button1.setLabel("Limpar");
+        button1.setActionCommand("dispose(); ");
+        button1.setLabel("Fechar");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
 
         button2.setLabel("Salvar");
         button2.addActionListener(new java.awt.event.ActionListener() {
@@ -77,16 +67,11 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textAreaComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textF_codComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 629, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(483, Short.MAX_VALUE)
                 .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,11 +80,7 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textF_codComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(73, 73, 73)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAreaComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,36 +98,25 @@ public class CadastroComentario extends javax.swing.JInternalFrame {
         Comentario comentario = new Comentario();
         comentario.setComentario(textAreaComentario.getText());
         ComentarioDAOImpl crud = new ComentarioDAOImpl();
-
-        if (textF_codComentario.getText().equals("")) {
-            // insere Comentario no banco de dados
-            if (crud.insere(comentario)) {
+        if (crud.insere(comentario)) {
                 JOptionPane.showMessageDialog(null, "Comentario inserido com sucesso");
             } else {
                 JOptionPane.showMessageDialog(null, "Comentario não inserido");
             }
-        } else {
-            // atualiza comentario no banco de dados
-            comentario.setIdComentario(Integer.parseInt(textF_codComentario.getText()));
-            if (crud.atualiza(comentario)) {
-                JOptionPane.showMessageDialog(null, "Comentario atualizado com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(null, "Comentario não atualizado");
-            }
-        }
+
+  
     }//GEN-LAST:event_button2ActionPerformed
 
-    private void textF_codComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textF_codComentarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textF_codComentarioActionPerformed
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:]
+        this.dispose();
+    }//GEN-LAST:event_button1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private java.awt.Button button2;
-    private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.TextArea textAreaComentario;
-    private java.awt.TextField textF_codComentario;
     // End of variables declaration//GEN-END:variables
 }

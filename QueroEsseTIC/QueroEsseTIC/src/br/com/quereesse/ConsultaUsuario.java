@@ -5,6 +5,7 @@
  */
 package br.com.quereesse;
 
+import br.com.quereesse.cadUsuario.AtualizaUsuario;
 import br.com.quereesse.cadUsuario.Usuario;
 import br.com.quereesse.cadUsuario.UsuarioDAOImpl;
 import java.util.ArrayList;
@@ -156,7 +157,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         }
         else{
             Usuario usuarioSelecionado = usuarios.get(linhaSelecionada);
-            CadastroUsuario atualiza = new CadastroUsuario(usuarioSelecionado);
+            AtualizaUsuario atualiza = new AtualizaUsuario(usuarioSelecionado);
             atualiza.setVisible(true);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
