@@ -67,7 +67,7 @@
               <Component id="label2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="textAreaComentario" min="-2" pref="132" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="212" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="button1" min="-2" max="-2" attributes="0"/>
                   <Component id="button2" min="-2" max="-2" attributes="0"/>
@@ -79,6 +79,9 @@
   </Layout>
   <SubComponents>
     <Component class="java.awt.TextField" name="textF_codComentario">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textF_codComentarioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="java.awt.Label" name="label1">
       <Properties>
