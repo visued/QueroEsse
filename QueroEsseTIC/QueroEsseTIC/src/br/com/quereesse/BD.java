@@ -17,9 +17,10 @@ public class BD {
    
     public static Connection conecta() {
         Connection con;
-        String url  = "jdbc:postgresql://localhost:5433/queroesse";
+        String url  = "jdbc:postgresql://localhost:5533/queroesse";
         String user = "postgres";
         String psw  = "1507";
+
 
         try {
             con = DriverManager.getConnection(url, user, psw);
