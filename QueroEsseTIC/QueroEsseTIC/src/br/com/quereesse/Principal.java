@@ -47,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         consultComentario = new javax.swing.JMenuItem();
         consultProduto = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -130,6 +131,20 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Sobre");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem5.setText("Ver");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem5);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -180,10 +195,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_consultUsuarioActionPerformed
 
     private void consultProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultProdutoActionPerformed
-        //ConsultaProduto telaConsultaProduto = new ConsultaProduto();
-        //jDesktopPane1.add(telaConsultaProduto);
-        //telaConsultaProduto.setVisible(true);
+        ConsultaProduto telaConsultaProduto = new ConsultaProduto();
+        jDesktopPane1.add(telaConsultaProduto);
+        telaConsultaProduto.setVisible(true);
     }//GEN-LAST:event_consultProdutoActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new Sobre().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,5 +258,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }

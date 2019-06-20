@@ -20,6 +20,7 @@ public class Produto {
     private String modelo;
     private int usuarioLogado;
     private Comentario comentario;
+    private String dscComentario;
 
     public int getId() {
         return id;
@@ -78,5 +79,13 @@ public class Produto {
     public void setUsuarioLogado(int usuarioLogado) {
         this.usuarioLogado = usuarioLogado;
     }  
+
+    public String getDscComentario() {
+        return dscComentario;
+    }
+
+    public void setDscComentario(String dscComentario) {
+        this.dscComentario = dscComentario;
+    }
     
 }

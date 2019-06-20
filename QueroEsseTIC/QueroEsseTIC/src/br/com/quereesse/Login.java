@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
      */
     ArrayList<Usuario> usuario;
     Connection conecta = BD.conecta();
-    private int usuarioLogado = 1;
+    private int usuarioLogado = 2;
 
     public int getUsuarioLogado() {
         return usuarioLogado;
