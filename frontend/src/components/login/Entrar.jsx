@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
+import './Senha.css';
 
 const headerProps = {
     icon: 'users',
@@ -16,6 +17,7 @@ const initialState = {
 
 export default class Entrar extends Component {
 
+    
     state = { ...initialState }
 
     componentWillMount() {
@@ -69,8 +71,8 @@ export default class Entrar extends Component {
                     <div className="col-12 col-md-6">
                         <div className="form-group">
                             <label>Senha</label>
-                            <input type="text" className="form-control"
-                                name="email"
+                            <input type="password" className="form-control"
+                                name="senha"
                                 value={this.state.login.senha}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite sua senha..." />
