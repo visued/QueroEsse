@@ -56,9 +56,12 @@ export default class Sobre extends Component {
             <div className="form">
                 <div className="row">
                     <div className="col-12 col-md-6">
-                       <p> Teste </p>
+                       <p> Foco principal é dar ao consumidor final as
+                            características boas e ruins de determinado produto na hora de 
+                            realizar a compra, não levando em consideração a compra somente pela internet,
+                             podendo assim ter todas as informações através do Central Web e comprar em uma
+                              loja física. </p>
                     </div>
-
                    
                 </div>
 

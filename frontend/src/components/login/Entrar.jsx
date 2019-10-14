@@ -83,7 +83,7 @@ export default class Entrar extends Component {
                     <div className="col-12 d-flex justify-content-end">
                         <button className="btn btn-primary"
                             onClick={e => this.save(e)}>
-                            Salvar
+                            Entrar
                         </button>
 
                         <button className="btn btn-secondary ml-2"
@@ -107,21 +107,21 @@ export default class Entrar extends Component {
         })
     }
 
-    renderTable() {
-        return (
-            <table className="table mt-4">
-                <thead>
-                    <tr>
-                        <th>E-mail</th>
-                        <th>Senha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderRows()}
-                </tbody>
-            </table>
-        )
-    }
+    // renderTable() {
+    //     return (
+    //         <table className="table mt-4">
+    //             <thead>
+    //                 <tr>
+    //                     <th>E-mail</th>
+    //                     <th>Senha</th>
+    //                 </tr>
+    //             </thead>
+    //             <tbody>
+    //                 {this.renderRows()}
+    //             </tbody>
+    //         </table>
+    //     )
+    // }
 
     renderRows() {
         return this.state.list.map(login => {
@@ -148,7 +148,7 @@ export default class Entrar extends Component {
         return (
             <Main {...headerProps}>
                 {this.renderForm()}
-                {this.renderTable()}
+                {/* {this.renderTable()} */}
             </Main>
         )
     }
