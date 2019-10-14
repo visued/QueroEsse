@@ -7,12 +7,15 @@ export default props =>
         <nav className="menu">
             {/* Refatorar em casa! */}
             <Link to="/">
-                <i className="fa fa-sign-in"></i> Entrar
+                <i className="fa fa-home"></i> Início
+            </Link>
+            <Link to="/entrar">
+                <i className="fa fa-user"></i> Entrar
             </Link>
             <Link to="/users">
                 <i className="fa fa-users"></i> Registrar
             </Link>
-            <Link to="/produtos">
+            <Link to="/sobre">
                 <i className="fa fa-info-circle"></i> Sobre
             </Link>
         </nav>
