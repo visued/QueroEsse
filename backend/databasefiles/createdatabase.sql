@@ -1,14 +1,3 @@
-﻿CREATE TABLE tb_agendamento (
-  id_agendamento SERIAL,
-  id_usuario VARCHAR(100),
-  status_agendamento VARCHAR(10),
-  finalizadoem TIMESTAMP,
-  agendadoem TIMESTAMP,
-  PRIMARY KEY(id_agendamento),
-  CONSTRAINT tb_agendamento_fk_id_usuario FOREIGN KEY(id_usuario)
-	REFERENCES a(id_usuario)
-);
-
 CREATE TABLE tb_usuario (
   id_usuario SERIAL,
   id_agendamento INTEGER,
@@ -84,4 +73,3 @@ CREATE TABLE tb_produto (
   CONSTRAINT tb_produto_fk_id_ecommerce FOREIGN KEY(id_ecommerce)
 	REFERENCES tb_ecommerce(id_ecommerce)
 );
-
