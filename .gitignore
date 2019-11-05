@@ -1,6 +1,8 @@
 /QueroEsseTIC/QueroEsseTIC/nbproject/private/
 /QueroEsseTIC/QueroEsseTIC/build/
 /QueroEsseTIC/QueroEsseTIC/dist/
+frontend/node_modules
+backend/node_modules
 backend/webcrawler/bin/activate
 backend/webcrawler/bin/activate_this.py
 backend/webcrawler/bin/activate.csh
