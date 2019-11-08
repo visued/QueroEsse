@@ -14,4 +14,3 @@ export default props =>
         <Redirect from='*' to='/' />
     </Switch>
 
-    // A ROTA ESTA DANDO UM ERRO
