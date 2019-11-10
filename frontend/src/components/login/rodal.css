@@ -7,7 +7,25 @@
     height: 100%;
     z-index: 100;
 }
-
+.btn-space{
+    margin-left: 25px !important;
+}
+.btn-primary {
+    margin-left: 80px !important;
+    background-color: #333 !important; 
+    border-color: #333 !important; 
+}
+.btn-primary:hover {
+    background-color:  #575757 !important;
+    border-color: #575757 !important;
+}
+.btn-primary:active{
+    background-color:  #575757 !important;
+    border-color: #575757 !important;
+}
+.text-center{
+    margin-left: -25px !important;
+}
 .rodal {
     position: fixed;
 }
@@ -28,9 +46,11 @@
     margin: auto;
     z-index: 101;
     padding: 15px;
-    background: #fff;
+    background: rgb(252, 252, 252);
+    border: 5px 5px 5px 5px;
+    border-color: rgb(0, 0, 0);
     border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(77, 70, 70, 0.2);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .rodal-dialog:focus {
