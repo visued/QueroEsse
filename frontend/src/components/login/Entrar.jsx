@@ -32,7 +32,9 @@ export default class Entrar extends Component {
                 {this.renderRedirect()}
                 <Rodal visible={this.state.visible} onClose={this.setRedirect}>
                     <div >
-                        <p className="text-center">Entre com o Google ou como visitante</p>
+                        <p>Entre com o Google ou clique em Pular <br/>
+                        para entrar como visitante
+                        </p>
                         <br />
                         <div className="btn btn-space">
                             <GoogleLogin

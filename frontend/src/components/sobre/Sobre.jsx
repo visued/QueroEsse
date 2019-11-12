@@ -15,7 +15,7 @@ export default class Sobre extends Component {
             <div className="form">
                 <div className="row">
                     <div className="col-12 col-md-6">
-                    <div className="text">
+                    <div>
        
                        <p> 
                             O nosso foco principal é dar ao consumidor as
@@ -24,7 +24,15 @@ export default class Sobre extends Component {
                             podendo assim ter todas as informações através da Central Web e também comprar em uma
                             loja física.
                         </p>
-                        
+                        <p>
+                            <h8><strong>Desenvolvido por:</strong></h8>
+                                <br/><br/>
+                                Mateus Borges Rodrigues
+                                <br/>
+                                Ramon Luiz Souza
+                                <br/>
+                                Victor Vinicius Sued Flávio
+                        </p>
                     </div>
                     
                 </div>
