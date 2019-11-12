@@ -15,7 +15,6 @@ export default class Entrar extends Component {
         super(props);
         this.state = { visible: true };
     }
-
     setRedirect = () => {
         this.setState({
             redirect: true
@@ -29,6 +28,7 @@ export default class Entrar extends Component {
     render() {
         return (
             <div>
+                
                 {this.renderRedirect()}
                 <Rodal visible={this.state.visible} onClose={this.setRedirect}>
                     <div >
@@ -46,8 +46,10 @@ export default class Entrar extends Component {
                         <Link to="/" >
                             <button className="btn btn-primary"> Pular </button>
                         </Link>
+                        
                     </div>
                 </Rodal>
+                
             </div>
         );
     }

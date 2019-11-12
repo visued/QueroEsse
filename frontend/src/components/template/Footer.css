@@ -29,6 +29,7 @@ footer.footer {
     text-decoration: none;
     margin-top: -9px;
 }
-.fa-github:hover {
-    background: linear-gradient(135deg, #1b1b1b 0%, #272727 100%)
+.fa-github:hover{
+    background: linear-gradient(135deg, #1b1b1b 0%, #272727 100%);
+    cursor: pointer
 }
