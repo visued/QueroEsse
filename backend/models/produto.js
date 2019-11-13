@@ -6,11 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     modelo: DataTypes.STRING,
     nome: DataTypes.STRING,
     rating: DataTypes.FLOAT,
-    especificacao_tecnica: DataTypes.STRING
-  },
-   {});
+    especificacao_tecnica: DataTypes.STRING,
+    agendamentoId: DataTypes.INTEGER
+  }, {});
   Produto.associate = function(models) {
-    // associations can be defined here
     Produto.hasMany(models.Comentario, {
       foreignKey: 'produtoId',
     });
@@ -21,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'produtoId',
     });
     Produto.belongsTo(models.Agendamento, {
-      foreignKey: 'produtoId',
+      foreignKey: 'agendamentoId',
     });
   };
   return Produto;

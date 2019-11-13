@@ -1,15 +1,21 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Agendamentos', {
+    return queryInterface.createTable('Comentarios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      status_agendamento: {
+      link: {
         type: Sequelize.STRING
+      },
+      comentario: {
+        type: Sequelize.STRING
+      },
+      produtoId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -22,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Agendamentos');
+    return queryInterface.dropTable('Comentarios');
   }
 };

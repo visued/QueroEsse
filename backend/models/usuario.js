@@ -10,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     cidade: DataTypes.STRING
   }, {});
   Usuario.associate = function(models) {
-    // associations can be defined here
     Usuario.hasMany(models.Agendamento, {
       foreignKey: 'usuarioId',
     });
