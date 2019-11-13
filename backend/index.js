@@ -24,7 +24,9 @@ app.post('/produtos', async (req,res) => {
     res.json(produtos)
 })
 app.get('/produtos', async (req,res) => {
-    const produtos = await Produto.findAll()
+    const produtos = await Produto.findAll({
+        include: [Comentario, NLTK]
+    })
     res.json(produtos)
 })
 // criação das APIs - pedido
@@ -33,7 +35,9 @@ app.post('/agendamentos', async (req,res) => {
     res.json(agendamentos)
 })
 app.get('/agendamentos', async (req,res) => {
-    const agendamentos = await Agendamento.findAll()
+    const agendamentos = await Agendamento.findAll({
+        include: [ Produto ]
+    })
     res.json(agendamentos)
 })
 app.post('/comentarios', async (req,res) => {
