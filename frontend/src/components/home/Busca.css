@@ -1,8 +1,9 @@
 .busca{
+    display: block;
     width:500px;
 	height:40px;
 	margin-left: 26% ;
-	border-radius: 5px;
+	border-radius: 8px;
     padding: 5px 9px;
     background-color:#FFF;
     -webkit-box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.22);
@@ -10,4 +11,10 @@
     border: 1px solid #c6c6c6;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     color: #222;
+ 
+}
+span.fa {
+        position: absolute;
+        top:353px;
+        right: 360px;
 }
