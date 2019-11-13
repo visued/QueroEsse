@@ -1,24 +1,29 @@
 {
-    "development": {
-       
-        "username": "postgres",
-        "password": "postgres",
-        "database": "QueroEsse",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
-    },
-    "test": {
-        "username": "postgres",
-        "password": "postgres",
-        "database": "QueroEsse",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
-    },
-    "production": {
-        "username": "postgres",
-        "password": "postgres",
-        "database": "QueroEsse",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
-    }
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "queroesse",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5432,
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "queroesse",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5432,
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "queroesse",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": 5432,
+    "operatorsAliases": false
+  }
 }
