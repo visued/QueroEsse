@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 import nltk
-#nltk.download()
+nltk.download()
 
 urlmgluiza = 'https://www.magazineluiza.com.br/smart-tv-led-32-samsung-j4290-wi-fi-2-hdmi-1-usb/p/193421800/et/elit/'
 urlcsbahia = 'https://www.casasbahia.com.br/TelefoneseCelulares/Smartphones/Android/smartphone-motorola-moto-g7-plus-indigo-xt1965-64gb-tela-de-624-4gb-de-ram-dual-chip-android-9-0-camera-traseira-dupla-e-processador-octa-core-14536905.html?recSource=whome&recType=lx_mais_vendidos'
@@ -67,6 +67,7 @@ class crawler:
             forFrequency.append(sub[0])
 
         frequency = FreqDist(forFrequency).most_common()
+        print(frequency)
 
 
         
@@ -160,6 +161,7 @@ class crawler:
         from nltk import FreqDist
 
         frequency = FreqDist(words_without_stopwords).most_common()
+        print(frequency)
 
     def find(self):
         #self.__get_mgluiza()
