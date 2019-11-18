@@ -64,4 +64,4 @@ app.get('/ntlk', async (req,res) => {
     const ntlk = await NLTK.findAll()
     res.json(ntlk)
 })
-app.listen(3000)
+app.listen(4000)

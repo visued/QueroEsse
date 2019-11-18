@@ -1,0 +1,6 @@
+Flask
+amqp
+celery
+nltk
+requests
+beautifulsoup4
