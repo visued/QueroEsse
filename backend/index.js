@@ -5,7 +5,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 // declaração dos models
-const {Usuario, Produto, Agendamento, Comentario, Ecommerce, NLTK} = require('./models')
+const {Usuario, Produto, Agendamento, Comentario, Ecommerce, NLTK, Aprovacao} = require('./models')
 
 // criação das APIs - user
 app.post('/usuarios', async (req,res) => {
@@ -55,6 +55,14 @@ app.post('/ecommerces', async (req,res) => {
 app.get('/ecommerces', async (req,res) => {
     const ecommerces = await Ecommerce.findAll()
     res.json(ecommerces)
+})
+app.post('/aprovados', async (req,res) => {
+    const aprovar = await Aprovacao.create(req.body)
+    res.json(aprovar)
+})
+app.get('/aprovados', async (req,res) => {
+    const aprovar = await Aprovacao.findAll()
+    res.json(aprovar)
 })
 app.post('/ntlk', async (req,res) => {
     const ntlk = await NLTK.create(req.body)

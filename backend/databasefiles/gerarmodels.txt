@@ -3,6 +3,7 @@ npx sequelize-cli model:generate --name Agendamento --attributes status_agendame
 npx sequelize-cli model:generate --name Comentario --attributes link:string,comentario:string,produtoId:integer
 npx sequelize-cli model:generate --name Ecommerce --attributes link:string,ecommerce:string,produtoId:integer
 npx sequelize-cli model:generate --name Produto --attributes descricao:string,foto:string,modelo:string,nome:string,rating:float,especificacao_tecnica:string,agendamentoId:integer
+npx sequelize-cli model:generate --name Aprovacao --attributes palavra:string,estado_aprovacao:string,produtoId:integer
 npx sequelize-cli model:generate --name NLTK --attributes atr_positivo:string,atr_negativo:string,produtoId:integer
 npx sequelize-cli model:generate --name NtlkStopWords --attributes atributo:string,frequencia:integer,produtoId:integer
 npx sequelize-cli model:generate --name Usuario --attributes nome:string,apelido:string,googleuserid:string,email:string,tipo:string,uf:string,cidade:string

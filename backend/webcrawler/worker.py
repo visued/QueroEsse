@@ -81,12 +81,6 @@ def mgluiza(agendamentoid, ecommerce, url):
     frequency = FreqDist(forFrequency).most_common()
 
     if None not in (productName, producRating, productImage, productInfo, productCode, comments, frequency):
-        print(productName)
-        print(producRating)
-        print(productImage)
-        print(len(productInfo))
-        print(productCode)
-
         payload = {
                         "descricao": productInfo,
                         "foto": productImage,
@@ -109,6 +103,17 @@ def mgluiza(agendamentoid, ecommerce, url):
                     }
             
             r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+        
+        for word, count in frequency:
+            if(count > 2):
+                payload = {
+                    "produtoid": str(id),
+                    "palavra": word,
+                    "estado_aprovacao": "N" 
+                }
+
+                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
+
 
 
 def csbahia(usuarioid, ecommerce, url):
