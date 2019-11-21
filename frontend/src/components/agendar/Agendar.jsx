@@ -28,6 +28,7 @@ export default class Agendar extends Component {
     }
 
     onSubmit(e) {
+        let crawler = {}
         e.preventDefault()
 
         const agendamentoObjeto = {
@@ -39,11 +40,25 @@ export default class Agendar extends Component {
 
         axios.post('http://localhost:4000/agendamentos', agendamentoObjeto)
             .then((res) => {
-                console.log(res.data)
+                crawler = res.data;
             }).catch((error) => {
                 console.log(error)
             });
 
+        const postCrawler = {
+            agendamentoid: crawler['id'],
+            link: crawler['link'],
+            ecommerce: crawler['ecommerce']
+        }        
+        
+        console.log(crawler);
+
+        axios.post('http://localhost:5000/crawler-scheduler', postCrawler)
+        .then((res) => {
+            console.log(res.data);
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
 
