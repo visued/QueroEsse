@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "queroesse",
-    "host": "192.168.1.66",
+    "host": "172.16.0.41",
     "dialect": "postgres",
     "port": 5432,
     "operatorsAliases": false
@@ -12,7 +12,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "queroesse",
-    "host": "192.168.1.66",
+    "host": "172.16.0.41",
     "dialect": "postgres",
     "port": 5432,
     "operatorsAliases": false
@@ -21,7 +21,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "queroesse",
-    "host": "192.168.1.66",
+    "host": "172.16.0.41",
     "dialect": "postgres",
     "port": 5432,
     "operatorsAliases": false

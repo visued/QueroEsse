@@ -4,3 +4,4 @@ celery
 nltk
 requests
 beautifulsoup4
+flask-cors

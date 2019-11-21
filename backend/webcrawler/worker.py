@@ -18,11 +18,11 @@ def crawler(agendamentoid, ecommerce, link):
         print('Worker Magazine Luiza')
         mgluiza(agendamentoid, ecommerce, link)
     elif(ecommerce == 'casasbahia'):
-        csbahia(usuarioid, ecommerce, link)
         print('Worker Casas Bahia')
+        csbahia(agendamentoid, ecommerce, link)
     elif(ecommerce == 'pontofrio'):
-        ptofrio(usuarioid, ecommerce, link)
         print('Worker Ponto Frio')
+        ptofrio(agendamentoid, ecommerce, link)
     else:
         print('Não acionou o Worker, verique!')
     
@@ -92,7 +92,7 @@ def mgluiza(agendamentoid, ecommerce, url):
                     }
         
         
-        r = requests.post('http://192.168.1.66:4000/produtos', data=payload, headers=headers)
+        r = requests.post('http://172.16.0.41:4000/produtos', data=payload, headers=headers)
         id = r.json()['id']
 
         for i in range(len(comments)):
@@ -102,7 +102,7 @@ def mgluiza(agendamentoid, ecommerce, url):
                         "produtoId": id
                     }
             
-            r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+            r = requests.post('http://172.16.0.41:4000/comentarios', data=payload, headers=headers)
         
         for word, count in frequency:
             if(count > 2):
@@ -112,11 +112,11 @@ def mgluiza(agendamentoid, ecommerce, url):
                     "estado_aprovacao": "N" 
                 }
 
-                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
+                requests.post('http://172.16.0.41:4000/aprovados', data=payload, headers=headers)
 
 
 
-def csbahia(usuarioid, ecommerce, url):
+def csbahia(agendamentoid, ecommerce, url):
     comments = []
     rBahia = requests.get(url).headers.update(headers)
     soup = BeautifulSoup(rBahia.text, 'html.parser')
@@ -172,7 +172,7 @@ def csbahia(usuarioid, ecommerce, url):
                     }
         
         
-        r = requests.post('http://192.168.1.66:4000/produtos', data=payload, headers=headers)
+        r = requests.post('http://172.16.0.41:4000/produtos', data=payload, headers=headers)
         id = r.json()['id']
 
         for i in range(len(comments)):
@@ -182,7 +182,7 @@ def csbahia(usuarioid, ecommerce, url):
                         "produtoId": id
                     }
             
-            r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+            r = requests.post('http://172.16.0.41:4000/comentarios', data=payload, headers=headers)
         
         for word, count in frequency:
             if(count > 2):
@@ -192,9 +192,9 @@ def csbahia(usuarioid, ecommerce, url):
                     "estado_aprovacao": "N" 
                 }
 
-                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
+                requests.post('http://172.16.0.41:4000/aprovados', data=payload, headers=headers)
 
-def ptofrio(usuarioid, ecommerce, url):
+def ptofrio(agendamentoid, ecommerce, url):
     comments = []
     rFrio = requests.get(url).headers.update(headers)
     soup = BeautifulSoup(rFrio.text, 'html.parser')
@@ -250,7 +250,7 @@ def ptofrio(usuarioid, ecommerce, url):
                     }
         
         
-        r = requests.post('http://192.168.1.66:4000/produtos', data=payload, headers=headers)
+        r = requests.post('http://172.16.0.41:4000/produtos', data=payload, headers=headers)
         id = r.json()['id']
 
         for i in range(len(comments)):
@@ -260,7 +260,7 @@ def ptofrio(usuarioid, ecommerce, url):
                         "produtoId": id
                     }
             
-            r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+            r = requests.post('http://172.16.0.41:4000/comentarios', data=payload, headers=headers)
         
         for word, count in frequency:
             if(count > 2):
@@ -270,4 +270,4 @@ def ptofrio(usuarioid, ecommerce, url):
                     "estado_aprovacao": "N" 
                 }
 
-                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
+                requests.post('http://172.16.0.41:4000/aprovados', data=payload, headers=headers)
