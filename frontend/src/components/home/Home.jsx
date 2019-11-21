@@ -20,7 +20,7 @@ const getTheme = () => {
   return getMuiTheme(baseTheme, overwrites);
 }
 
-const googleAutoSuggestURL = `//suggestqueries.google.com/complete/search?client=youtube&ds=yt&q=`;
+const googleAutoSuggestURL = `//localhost:4000/produtos/nome/`;
 
 class Busca extends React.Component {
     

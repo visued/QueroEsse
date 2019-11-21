@@ -1,13 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const allowCors = require('./config/cors')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-
+app.use(allowCors)
 // declaração dos models
 const {Usuario, Produto, Agendamento, Comentario, Ecommerce, NLTK, Aprovacao} = require('./models')
+const Sequelize = require('sequelize');
 
-// criação das APIs - user
+
+const Op = Sequelize.Op
 app.post('/usuarios', async (req,res) => {
     const usuarios = await Usuario.create(req.body)
     res.json(usuarios)
@@ -18,7 +21,6 @@ app.get('/usuarios', async (req,res) => {
     })
     res.json(usuarios)
 })
-// criação das APIs - product
 app.post('/produtos', async (req,res) => {
     const produtos = await Produto.create(req.body)
     res.json(produtos)
@@ -29,7 +31,23 @@ app.get('/produtos', async (req,res) => {
     })
     res.json(produtos)
 })
-// criação das APIs - pedido
+app.get('/produtos/:id', async (req,res) => {
+    const produtos = await Produto.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [Comentario, NLTK]
+    })
+    res.json(produtos)
+})
+app.get('/produtos/nome/:nome', async (req,res) => {
+    const produtos = await Produto.findAll({
+        where: {
+            nome: { [ Op.like]: '%'+req.params.nome+'%' }
+        }
+    })
+    res.json(produtos)
+})
 app.post('/agendamentos', async (req,res) => {
     const agendamentos = await Agendamento.create(req.body)
     res.json(agendamentos)

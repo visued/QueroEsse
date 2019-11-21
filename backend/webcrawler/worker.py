@@ -15,16 +15,16 @@ celery = Celery('worker', broker=CELERY_BROKER_URL, backend=CELERY_RESULT_BACKEN
 @celery.task()
 def crawler(agendamentoid, ecommerce, link):
     if(ecommerce == 'magazineluiza'):
-        print('Worker magazine')
+        print('Worker Magazine Luiza')
         mgluiza(agendamentoid, ecommerce, link)
     elif(ecommerce == 'casasbahia'):
         csbahia(usuarioid, ecommerce, link)
-        print('entrou aqui casas bahia...')
+        print('Worker Casas Bahia')
     elif(ecommerce == 'pontofrio'):
         ptofrio(usuarioid, ecommerce, link)
-        print('entrou aqui ponto frio...')
+        print('Worker Ponto Frio')
     else:
-        print('pulou tudo....')
+        print('Não acionou o Worker, verique!')
     
     
 
@@ -107,7 +107,7 @@ def mgluiza(agendamentoid, ecommerce, url):
         for word, count in frequency:
             if(count > 2):
                 payload = {
-                    "produtoid": str(id),
+                    "produtoid": id,
                     "palavra": word,
                     "estado_aprovacao": "N" 
                 }
@@ -159,7 +159,40 @@ def csbahia(usuarioid, ecommerce, url):
     from nltk import FreqDist
 
     frequency = FreqDist(words_without_stopwords).most_common()
-    print(frequency)
+
+    if None not in (productName, producRating, productImage, productInfo, productCode, comments, frequency):
+        payload = {
+                        "descricao": productInfo,
+                        "foto": productImage,
+                        "modelo": "queroesse",
+                        "nome": productName,
+                        "rating": float(producRating.replace(',', '.')),
+                        "especificacao_tecnica": "queroesse",
+                        "agendamentoId": agendamentoid
+                    }
+        
+        
+        r = requests.post('http://192.168.1.66:4000/produtos', data=payload, headers=headers)
+        id = r.json()['id']
+
+        for i in range(len(comments)):
+            payload = {
+                        "link": url,
+                        "comentario": comments[i],
+                        "produtoId": id
+                    }
+            
+            r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+        
+        for word, count in frequency:
+            if(count > 2):
+                payload = {
+                    "produtoid": id,
+                    "palavra": word,
+                    "estado_aprovacao": "N" 
+                }
+
+                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
 
 def ptofrio(usuarioid, ecommerce, url):
     comments = []
@@ -205,4 +238,36 @@ def ptofrio(usuarioid, ecommerce, url):
     from nltk import FreqDist
 
     frequency = FreqDist(words_without_stopwords).most_common()
-    print(frequency)
+    if None not in (productName, producRating, productImage, productInfo, productCode, comments, frequency):
+        payload = {
+                        "descricao": productInfo,
+                        "foto": productImage,
+                        "modelo": "queroesse",
+                        "nome": productName,
+                        "rating": float(producRating.replace(',', '.')),
+                        "especificacao_tecnica": "queroesse",
+                        "agendamentoId": agendamentoid
+                    }
+        
+        
+        r = requests.post('http://192.168.1.66:4000/produtos', data=payload, headers=headers)
+        id = r.json()['id']
+
+        for i in range(len(comments)):
+            payload = {
+                        "link": url,
+                        "comentario": comments[i],
+                        "produtoId": id
+                    }
+            
+            r = requests.post('http://192.168.1.66:4000/comentarios', data=payload, headers=headers)
+        
+        for word, count in frequency:
+            if(count > 2):
+                payload = {
+                    "produtoid": id,
+                    "palavra": word,
+                    "estado_aprovacao": "N" 
+                }
+
+                requests.post('http://192.168.1.66:4000/aprovados', data=payload, headers=headers)
