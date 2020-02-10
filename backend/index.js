@@ -29,6 +29,19 @@ app.get('/produtos', async (req,res) => {
     })
     res.json(produtos)
 })
+app.post('/produtos/:id', async (req,res) => {
+    const produtos = await Produto.create(req.body)
+    
+    res.json(produtos)
+})
+app.get('/produtos/:id', async (req,res) => {
+    const produtos = await Produto.findByPk(req.params.id, {include:[Comentario, NLTK]})
+
+    res.json(produtos)
+    })
+
+    
+
 // criação das APIs - pedido
 app.post('/agendamentos', async (req,res) => {
     const agendamentos = await Agendamento.create(req.body)
@@ -64,4 +77,4 @@ app.get('/ntlk', async (req,res) => {
     const ntlk = await NLTK.findAll()
     res.json(ntlk)
 })
-app.listen(3000)
+app.listen(3001)
