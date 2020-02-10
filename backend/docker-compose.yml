@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  queroesse:
+    image: queroesse
+    container_name: backendqueroesse  
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000
+
+    networks:
+      - queroesse-network      
+
+networks: 
+  queroesse-network:
+    driver: bridge  

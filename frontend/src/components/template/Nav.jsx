@@ -13,14 +13,20 @@ export default props =>
             </Link>
             
             <Link to="/entrar">
-                
                 <i className="fa fa-user"></i> Entrar
             </Link>
+            
             <Link to="/users">
                 <i className="fa fa-users"></i> Registrar
             </Link>
+
+            <Link to="/agendar-crawler">
+                <i className="fa fa-tasks"></i> Agendamento
+            </Link>
+
             <Link to="/sobre">
                 <i className="fa fa-info-circle"></i> Sobre
             </Link>
+
         </nav>
     </aside>

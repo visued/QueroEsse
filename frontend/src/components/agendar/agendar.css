@@ -1,0 +1,29 @@
+#linkProduto {
+    margin-left: 4px;
+}
+
+#agendaCrawler{
+    margin-right: 10px;
+}
+
+#formAgendaCrawler{
+    margin-bottom: 8px;
+}
+
+.title {
+    color: #333333;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.table {
+    max-width: 98vw;
+    margin: 0 1vw;
+    }
+  
+  .table td {
+    max-width: 100px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
